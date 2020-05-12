@@ -32,8 +32,9 @@ function Edit({match}) {
   async function handleSubmit(e){
     e.preventDefault();
     const book = {name, author, genre, ISBN, pages};
+    const { params:{ id } } = match;
     try{
-      await api.post('/books', book);
+      await api.post(`/books/${id}`, book);
       history.push('/');
     }
     catch(err){
